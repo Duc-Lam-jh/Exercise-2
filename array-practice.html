@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript exercise</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    //Input
+    const array = [1, 2, 2, 2, 3, 3, 5, 6, 7, 3, 3, 9, 9, 2, 5, 2, 3, 4];
+    console.log('Input: ' + array);
+
+    //Ex 1:
+    function removeDupes1(array) {
+      //xóa hết những phần tử trùng với phần tử đang xét bằng cách xét lastIndexOf
+      const noDupe = {};
+      array.forEach((element) => noDupe[element] = true);
+
+      // for (let i = 0; i < tmpArray.length; i++) {
+      //     while (tmpArray.lastIndexOf(tmpArray[i]) != i) {
+      //         tmpArray.splice(tmpArray.lastIndexOf(tmpArray[i]), 1);
+      //     }
+      // }
+      return Object.keys(noDupe).map(Number);
+    }
+
+    function removeDupes2(array) {
+      //chạy 2 vòng lặp for, khi gặp phần tử trùng với phần tử đang xét thì xóa
+      tmpArray = [...new Set(array)];
+      // for (let i = 0; i < tmpArray.length; i++) {
+      //     for (let j = i + 1; j < tmpArray.length; j++) {
+      //         if (tmpArray[i] == tmpArray[j]) {
+      //             tmpArray.splice(j, 1);
+      //             j--;
+      //         }
+      //     }
+      // }
+      return tmpArray;
+    }
+
+    function removeDupes3(array) {
+      //sort array từ bé đến lớn, so sánh 2 phần từ kế bên nên bằng nhau thì xóa bớt 1 đứa
+      const tmpArray = array.slice();
+      
+      tmpArray.sort();
+      for (let i = 0; i < tmpArray.length - 1; i++) {
+        if (tmpArray[i] == tmpArray[i + 1]) {
+          tmpArray.splice(i + 1, 1);
+          i--;
+        }
+      }
+      return tmpArray;
+    }
+
+    console.log('\nEx 1: remove duplicates');
+    console.log(removeDupes1(array));
+    console.log(removeDupes2(array));
+    console.log(removeDupes3(array));
+
+    //Ex 2:
+    function getMostRepeated(array) {
+      const tmpArray = {}, obj = {};
+      let max = 0;
+
+      array.reduce((prev, curr, index) => {
+        //count the times each item appears in array
+        if(obj[prev] != undefined){
+          obj[prev]++;
+        }
+        else{
+          obj[prev] = 1
+        }
+
+        //if an item has the max appearance time, add it into the abject tmpArray, otherwise delete it
+        if(max < obj[prev]){
+          delete tmpArray[max];
+          max = obj[prev];
+          tmpArray[prev] = true;
+        }
+
+        return curr;
+      })
+
+      return tmpArray;
+      //O(n)
+      //đếm số lần mỗi phần tử xuất hiện
+      //array.forEach(element => obj[element] != undefined ? obj[element]++ : obj[element] = 1); 
+
+      //O(n)
+      //const max = Math.max(...Object.values(obj));
+
+      //O(n)
+    //   Object.entries(obj).forEach(element => {
+    //     if(element[1] == max){
+    //       tmpArray.push(element[0]);
+    //     }
+    //  })
+    }
+
+    console.log('\nEx 2: get most repeated');
+    console.log(getMostRepeated(array));
+    //getMostRepeated(array);
+  </script>
+</body>
+
+</html>

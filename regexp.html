@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regular expression exercise</title>
+</head>
+
+<body>
+  <label for='email'>Email:
+    <input id="email" type="text">
+  </label>
+  <button id='check-email' onclick="checkEmail()">Check</button>
+
+  <br />
+
+  <label for='password'>Password (Has at least 8 characters with at least 1 uppercase letter, 1 number, 1 special
+    character):
+    <input id="password" type="text">
+  </label>
+  <button id='check-password' onclick="checkPassword()">Check</button>
+
+  <script type="text/javascript">
+    function checkEmail() {
+      const text = document.getElementById('email').value;
+      //fix special characters 
+      const emailRegExp = /^[A-Za-z0-9-_+\.]+@[A-Za-z0-9-_]+(\.[A-Za-z0-9-_]+)+\w{1,3}$/m;
+
+      if (!emailRegExp.test(text)) {
+        alert('Hãy nhập email có thật!');
+      }
+      else {
+        alert('Nhập đúng mail rồi!');
+      }
+    }
+
+    function checkPassword() {
+      const text = document.getElementById('password').value;
+      const passwordRegExp = /^(.{0,7}|[^A-Z]*|[^0-9]*|[A-Za-z0-9]*)$/;
+
+      if (passwordRegExp.test(text)) {
+        alert('Hãy nhập password đúng yêu cầu!');
+      }
+      else {
+        alert('Nhập đúng password rồi!');
+      }
+    }
+  </script>
+</body>
+
+</html>

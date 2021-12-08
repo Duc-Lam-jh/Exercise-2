@@ -1,0 +1,92 @@
+body{
+  margin: 0;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+}
+
+.carousel{
+  width: 500px;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: lightblue;
+}
+
+.carousel .items{
+  height: 100%;
+  width: 500px;
+  position: absolute;
+}
+
+.carousel .items .item{
+  background-position: center;
+  height: 100%;
+  width: 100%;
+
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  transition: 300ms;
+
+  display: none;
+
+  z-index: 0;
+}
+
+.carousel .items .item.active{
+  left: 0px;
+  top: 0px;
+  transition: 300ms;
+  display: inline-block;
+  z-index: 2;
+}
+
+.carousel .items .item.left{
+  left: -100%;
+  position: absolute;
+  display: inline-block;
+  transition: 300ms;
+  z-index: 2;
+}
+
+.carousel .items .item.right{
+  left: 100%;
+  position: absolute;
+  display: inline-block;
+  transition: 300ms;
+  z-index: 2;
+}
+
+.carousel .buttons{
+  display: flex;
+  width: 500px;
+  align-items: center;
+  justify-content: space-between;
+
+  top: 50%;
+  transform: translateY(-50%);
+  position: relative;
+
+  z-index: 2;
+}
+
+.carousel .buttons .button{
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+}
+
+.carousel .buttons .prev-button{
+  margin-left: 10px;
+}
+
+.carousel .buttons .next-button{
+  margin-right: 10px;
+}
