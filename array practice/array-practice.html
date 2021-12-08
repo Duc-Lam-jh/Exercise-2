@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Javascript exercise</title>
+  <title>Array-object exercise</title>
 </head>
 
 <body>
@@ -16,34 +16,18 @@
 
     //Ex 1:
     function removeDupes1(array) {
-      //xóa hết những phần tử trùng với phần tử đang xét bằng cách xét lastIndexOf
       const noDupe = {};
-      array.forEach((element) => noDupe[element] = true);
-
-      // for (let i = 0; i < tmpArray.length; i++) {
-      //     while (tmpArray.lastIndexOf(tmpArray[i]) != i) {
-      //         tmpArray.splice(tmpArray.lastIndexOf(tmpArray[i]), 1);
-      //     }
-      // }
+      array.forEach((element) => noDupe[element] = true);      
       return Object.keys(noDupe).map(Number);
     }
 
     function removeDupes2(array) {
-      //chạy 2 vòng lặp for, khi gặp phần tử trùng với phần tử đang xét thì xóa
       tmpArray = [...new Set(array)];
-      // for (let i = 0; i < tmpArray.length; i++) {
-      //     for (let j = i + 1; j < tmpArray.length; j++) {
-      //         if (tmpArray[i] == tmpArray[j]) {
-      //             tmpArray.splice(j, 1);
-      //             j--;
-      //         }
-      //     }
-      // }
       return tmpArray;
     }
 
     function removeDupes3(array) {
-      //sort array từ bé đến lớn, so sánh 2 phần từ kế bên nên bằng nhau thì xóa bớt 1 đứa
+      //sort the array then remove an item if it's equal to the one next to it
       const tmpArray = array.slice();
       
       tmpArray.sort();
@@ -86,24 +70,10 @@
       })
 
       return tmpArray;
-      //O(n)
-      //đếm số lần mỗi phần tử xuất hiện
-      //array.forEach(element => obj[element] != undefined ? obj[element]++ : obj[element] = 1); 
-
-      //O(n)
-      //const max = Math.max(...Object.values(obj));
-
-      //O(n)
-    //   Object.entries(obj).forEach(element => {
-    //     if(element[1] == max){
-    //       tmpArray.push(element[0]);
-    //     }
-    //  })
     }
 
     console.log('\nEx 2: get most repeated');
     console.log(getMostRepeated(array));
-    //getMostRepeated(array);
   </script>
 </body>
 
