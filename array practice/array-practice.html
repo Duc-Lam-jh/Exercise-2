@@ -11,7 +11,7 @@
 <body>
   <script type="text/javascript">
     //Input
-    const array = [1, 2, 2, 2, 3, 3, 5, 6, 7, 3, 3, 9, 9, 2, 5, 2, 3, 4];
+    const array = [1, 2, 4, 2, 4, 3, 3, 5, 6, 7, 3, 3, 9, 9, 2, 5, 2, 3, 4];
     console.log('Input: ' + array);
 
     //Ex 1:
@@ -47,26 +47,30 @@
 
     //Ex 2:
     function getMostRepeated(array) {
-      const tmpArray = {}, obj = {};
-      let max = 0;
+      const tmpArray = {};
 
       array.reduce((prev, curr, index) => {
+        let obj = prev.obj==undefined ? {} : prev.obj;
+        let max = prev.max==undefined ? 0 : prev.max;
+        //if prev is a number -> start of the loops
+        prev = !isNaN(prev) ? {curr: prev} : prev;
+
         //count the times each item appears in array
-        if(obj[prev] != undefined){
-          obj[prev]++;
+        if(obj[prev.curr] != undefined){
+          obj[prev.curr]++;
         }
         else{
-          obj[prev] = 1
+          obj[prev.curr] = 1
         }
 
         //if an item has the max appearance time, add it into the abject tmpArray, otherwise delete it
-        if(max < obj[prev]){
+        if(max < obj[prev.curr]){
           delete tmpArray[max];
-          max = obj[prev];
-          tmpArray[prev] = true;
+          max = obj[prev.curr];
+          tmpArray[prev.curr] = true;
         }
-
-        return curr;
+        
+        return {curr, obj, max};
       })
 
       return tmpArray;

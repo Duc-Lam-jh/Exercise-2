@@ -12,19 +12,20 @@
 
 <body>
   <div class="container">
-    <div class="wrapper">
-      <div class="moveable">
-        <img class="click-through" src="./Xiao.png" width="700px" />
+    <div class="reposition-box">
+      <div class="wrapper">
+        <div name="toMove" class="non-moveable">
+          <img id="img" class="click-through" src="./Xiao.png" width="700px" />
+        </div>
+      </div>
+  
+      <div id="controls" class="controls">
+        <button id="reposition" onclick="ToggleReposition()">Reposition</button>
       </div>
     </div>
-
-    <div class="wrapper">
-      <div class="moveable">
-        <img class="click-through" src="./Qiqi.png" width="700px" />
-      </div>
+  
     </div>
-  </div>
-
+    
   <script src="script.js"></script>
 </body>
 

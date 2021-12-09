@@ -6,8 +6,16 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
   justify-content: center;
   align-items: center;
+}
+
+.reposition-box{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .wrapper {
@@ -16,6 +24,10 @@ body {
   position: relative;
   overflow: hidden;
   border: 5px greenyellow dashed;
+}
+
+.non-moveable{
+  position: absolute;
 }
 
 .moveable {
@@ -35,4 +47,16 @@ body {
 
 .click-through{
   pointer-events: none;
+}
+
+.none{
+  display: none;
+}
+
+.controls{
+  width: 100%;
+  display: flex;
+  justify-self: start;
+
+  gap: 20px;
 }
